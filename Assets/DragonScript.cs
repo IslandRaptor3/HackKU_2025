@@ -8,6 +8,8 @@ public class DragonScript : MonoBehaviour
     public float squashAmount = 0.05f;
     public float squishAmount = 2f;
     public int health = 10; //Dragon Health
+    public GameObject Fireball;
+    public float fireballSpeed = 10f;
 
     public GameObject Dragon_Up;
     public GameObject Dragon_Down;
@@ -74,6 +76,10 @@ public class DragonScript : MonoBehaviour
                 activeSprite.transform.localScale = Vector3.one;
             }
         }
+        if (Input.GetMouseButtonDown(0)) // Left click
+        {
+            ShootFireball();
+        }
     }
 
 
@@ -118,4 +124,24 @@ public class DragonScript : MonoBehaviour
         // You can play death animation or particles here
         Destroy(gameObject);
     } 
+    void ShootFireball()
+    {
+        // Get mouse position in world space
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f; // Ensure z is 0 in 2D
+
+        // Calculate direction from dragon to mouse
+        Vector2 direction = (mouseWorldPos - transform.position).normalized;
+
+        // Instantiate fireball at dragon's position
+        GameObject fireball = Instantiate(Fireball, transform.position, Quaternion.identity);
+        fireball.transform.right = direction;
+
+        // Apply velocity or movement
+        Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = direction * fireballSpeed;
+        }
+    }
 }

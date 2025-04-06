@@ -7,18 +7,18 @@ public class Fireball : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, lifetime); // Destroy after 3 seconds
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
 
-        EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-        }
+    //     EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+    //     if (enemy != null)
+    //     {
+    //         enemy.TakeDamage(damage);
+    //     }
 
-        Destroy(gameObject);
-    }
+    //     Destroy(gameObject);
+    // }
 }
