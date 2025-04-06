@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dragon_Design_Sheet-4_0: 3479358434201732817
+      Dragon_Design_Sheet-4_1: 3041494596681325310
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
